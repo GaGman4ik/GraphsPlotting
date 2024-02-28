@@ -3,10 +3,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:zed="clr-namespace:ZedGraph;assembly=ZedGraph"
         xmlns:local="clr-namespace:GraphsPlotting"
+        
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="722" Width="1356">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="971*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TextBoxInput" HorizontalAlignment="Left" Margin="37,46,0,0" TextWrapping="Wrap" Text="Write your expression here" VerticalAlignment="Top" Width="330" Height="25" TextChanged="TextBoxInput_TextChanged"/>
+        <Button x:Name="BtnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,171,0,0" VerticalAlignment="Top" Height="82" Width="330" Click="BtnPrint_Click"/>
+        <Canvas RenderTransformOrigin="0.509,0.495" Margin="390,11,0,25" HorizontalAlignment="Left" Width="400">
+            <Grid Name="grid1" Height="373" Width="357" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="54*"/>
+                    <RowDefinition Height="269*"/>
+                </Grid.RowDefinitions>
+                <Polyline Name="Graph" Stroke="Red" StrokeThickness="1" Margin="0,0,-10,0" Grid.RowSpan="3"/>
+            </Grid>
+        </Canvas>
 
+        <TextBox x:Name="TextBoxUpBound" HorizontalAlignment="Left" Margin="245,86,0,0" TextWrapping="Wrap" Text="UpBound" VerticalAlignment="Top" Width="122" Height="20" TextChanged="TextBoxInput_TextChanged"/>
+        <TextBox x:Name="TextBoxDownBound" HorizontalAlignment="Left" Margin="37,86,0,0" TextWrapping="Wrap" Text="DownBound" VerticalAlignment="Top" Width="102" Height="20" TextChanged="TextBoxInput_TextChanged"/>
+        <WindowsFormsHost HorizontalAlignment="Left" Height="638" Margin="400,27,0,0" VerticalAlignment="Top" Width="882" ChildChanged="WindowsFormsHost_ChildChanged">
+            <zed:ZedGraphControl Name="zgc" x:Name="zgc" Width="400" Height="400" />
+        </WindowsFormsHost>
     </Grid>
 </Window>
